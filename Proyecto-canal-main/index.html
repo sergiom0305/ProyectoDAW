@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de inundaciones | GlobalTech</title>
+    <link rel="stylesheet" href="control/src/css/styles.css">
+    <link rel="icon" href="control/public/assets/images/logo.png" type="image/png">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-contenido">
+            <img src="control/public/assets/images/logo2.png" alt="Logo GlobalTech" class="logo">
+            <div class="header-texto">
+                <h1>Control de inundaciones</h1>
+                <p>Monitoreo con sensores</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navegacion">
+        <ul>
+            <li><button id="btn-proyecto">Información del proyecto</button></li>
+            <li><button id="btn-sensores">Consulta de sensores</button></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Sección 1: Información del Proyecto -->
+        <section id="seccion-proyecto" class="seccion-activa">
+            <h2>Información del proyecto</h2>
+            
+            <article class="subseccion">
+            <h3>Contexto</h3>
+            <p> base de datos orientada a la gestión de información y simulaciones 
+                sobre posibles alertas por inundaciones en la zona de San Luis vía Calera. Con los datos recopilados por un caudal con sensores
+                (10) posicionados estrategicamente que luego se proyectan en una web y arrojan una alerta previa al simulacro a entidades 
+                publicas de riesgo, se pretende mejorar la capacidad de respuesta y la toma de decisiones para mitigar riesgos.</p>
+            <div class="contenedor-imagenes">
+                <img src="control/public/assets/images/antecedentes.jpg" alt="Quebrada Morací" width="500">
+                <img src="control/public/assets/images/antecedentes2.png" alt="Detalle de la Quebrada Morací" width="200">
+                <img src="control/public/assets/images/inundacion.jpg" alt="Daños en la Vía a La Calera" width="355">
+            </div>
+            <p>
+                En Colombia, diversos municipios han enfrentado emergencias por desbordamientos.
+                 La ausencia de registros unificados dificulta la planeación y prevención, esto se vio reflejado en la localidad de san 
+                luis donde debido a las altas lluvias se generaron varias inundaciones las cuales generaron bastantes percances y perdidas 
+                a causa de una lenta reacción.
+
+
+            </p>
+            <p>
+                Este proyecto se justifica en la necesidad de contar con un sistema de información robusto, confiable y accesible que apoye 
+                la gestión del riesgo.
+            </p>
+            
+
+            <h3>Causas y afectaciones</h3>
+            <p>La vulnerabilidad de San Luis Altos del Cabo se debe, en gran medida, a la naturaleza 
+                 de su desarrollo urbano. Gran parte del sector se compone de asentamientos informales 
+                 donde la construcción no siguió las pautas de planeación urbana adecuadas. Esto ha 
+                 llevado a:</p>
+            <ul>
+                <li><strong>Ocupación de zonas de riesgo:</strong>Construcción de predios en áreas inadecuadas y de alto riesgo.</li>
+                <li><strong>Falta de gestión hídrica:</strong>Las quebradas carecen de estudios hidrológicos actualizados y de una gestión adecuada.</li>
+                <li><strong>Deficiencias de drenaje:</strong>Ausencia total o insuficiencia de elementos de drenaje pluvial que puedan manejar volúmenes de agua extraordinarios.</li>
+            </ul>
+            <p> Adicionalmente, se identificaron factores de riesgo específicos que contribuyeron al desastre:</p>
+            <ul>
+                <li>El IDIGER había advertido previamente sobre la presencia de vegetación con raíces débiles en los cauces, un material que fue fácilmente arrastrado por el flujo torrencial.</li>
+                <li>Se detectó la ausencia de equipos y sistemas especializados para la prevención de desastres.</li>
+                <li>Inspecciones en campo (apoyadas por herramientas como Google Earth) revelaron excavaciones y obras deficientemente ejecutadas en las riberas de las quebradas, lo que comprometió su estabilidad estructural.</li>
+            </ul>
+            </article>
+
+            <article class="subseccion">
+                <h3>
+                    <a href="https://www.idiger.gov.co/escenarios-de-riesgo/riesgo-avenidas-torrenciales/recomendaciones-generales">Recomendaciones generales</a> 
+                </h3>
+                <ul>
+                    <li>Inspeccionar y reportar cambios de niveles súbitos en el cauce (bajos y altos niveles que anormalmente se presenten)</li>
+                    <li>Estar atento y reportar deslizamientos o erosión de las laderas del cauce</li>
+                    <li>Evitar taponamientos en el cauce por basuras o escombros y en caso de que se presenten informar a las autoridades</li>
+                    <li>Revisar posibles afectaciones de los jarillones</li>
+                    <li>Aléjese de la zona del cauce cuando evidencia el tránsito vegetación, troncos, rocas, etc.</li>
+                    <li>Aléjese de la zona del cauce cuando escuche sonidos extraños aguas arriba, pueden deberse al transporte de rocas y troncos a causa de la avenida torrencial</li>
+                    <li>Esté atento al comportamiento del cauce cuando se presenten lluvias frecuentes</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Sección 3: Consulta de Sensores  -->
+        <section id="seccion-sensores" class="seccion-oculta">
+            <h2>Consulta de Sensores </h2>
+                    
+            <form id="form-busqueda">
+                <label for="fecha">Fecha (YYYY-MM-DD):</label>
+                <input type="date" id="fecha" name="fecha">
+                
+                <label for="tipo">Tipo de Alerta:</label>
+                <select id="tipo" name="tipo">
+                    <option value="">Todas</option>
+                    <option value="alta">Nivel Alto (>150 cm)</option>
+                    <option value="media">Nivel Medio (50-150 cm)</option>
+                    <option value="baja">Nivel Bajo (<50 cm)</option>
+                </select>
+                
+                <button type="submit">Buscar</button>
+            </form>
+
+            <div id="resultados">
+                <table id="tabla-sensores">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Sensor ID</th>
+                            <th>Nivel de Agua (cm)</th>
+                            <th>Tipo de Alerta</th>
+                            <th>Acciones Tomadas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-sensores">
+                        <!-- Datos se cargan con JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GlobalTech. Todos los derechos reservados. | Proyecto Vía Calera</p>
+    </footer>
+
+    <script src="control/src/js/script.js"></script>
+</body>
+</html>
